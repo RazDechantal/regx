@@ -6,6 +6,16 @@ phone number. Write a function called "transform_record" in which the regular ex
 print(transform_record("Sabrina Green,802-867-5309,System Administrator"))
 
 Should print "Sabrina Green,+1-802-867-5309,System Administrator"
+
+The transform_record function uses re.sub() to substitute the matched phone number pattern with the modified format.
+
+The regular expression (\b\d{3}-\d{3}-\d{4}\b) consists of the following components:
+
+(\b\d{3}-\d{3}-\d{4}\b) defines a capturing group with parentheses that matches the pattern of a phone number in the format "###-###-####" 
+where '#' represents a digit.
+\b is a word boundary to ensure the phone number is a separate word.
+In re.sub(), the first argument is the regular expression pattern, the second argument r"+1-\1" is the replacement string. Here, \1 refers 
+to the content matched by the capturing group, representing the phone number.
 """
 import re
 def transform_record(record):
